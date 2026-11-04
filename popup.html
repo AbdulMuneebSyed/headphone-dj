@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Headphone DJ</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.mjs"></script>
+</head>
+<body>
+  <header>
+    <div><h1>Headphone DJ<span>.</span></h1><p>Chrome audio mixer</p></div>
+    <button id="bypass" aria-pressed="false" title="Compare with the original, unprocessed audio">Bypass</button>
+  </header>
+  <main>
+    <section class="connection" aria-label="Audio connection">
+      <div class="connection-copy"><p class="status-label"><span id="status-dot"></span><span id="status" role="status">Loading mixer…</span></p><p id="source">One tab. Your sound.</p></div>
+      <button id="capture" class="primary" disabled>Start mixer</button>
+    </section>
+    <p id="error" role="alert" hidden></p>
+    <section class="equalizer" aria-labelledby="eq-title">
+      <div class="section-heading"><h2 id="eq-title">Equalizer <span>±12 dB</span></h2><div class="preset-control"><label for="preset" id="preset-label">Presets</label><select id="preset"><option>Custom</option></select></div></div>
+      <div id="bands" class="bands"></div>
+      <div class="frequency-guide" aria-hidden="true"><span>Sub &amp; bass</span><span>Mids &amp; vocals</span><span>Detail &amp; air</span></div>
+    </section>
+    <section class="tone" aria-label="Tone and balance">
+      <div class="control"><div class="control-heading"><label for="bass">Bass</label><output for="bass" id="bass-value">0 dB</output></div><input id="bass" type="range" min="-12" max="12" step="0.5" value="0"><div class="endpoints" aria-hidden="true"><span>Cut</span><span>Boost</span></div></div>
+      <div class="control"><div class="control-heading"><label for="treble">Treble</label><output for="treble" id="treble-value">0 dB</output></div><input id="treble" type="range" min="-12" max="12" step="0.5" value="0"><div class="endpoints" aria-hidden="true"><span>Cut</span><span>Boost</span></div></div>
+      <div class="control"><div class="control-heading"><label for="balance">Balance</label><output for="balance" id="balance-value">Center</output></div><input id="balance" type="range" min="-1" max="1" step="0.05" value="0"><div class="endpoints" aria-hidden="true"><span>L</span><span>R</span></div></div>
+    </section>
+    <section class="master" aria-label="Output volume">
+      <label for="volume">Volume</label><input id="volume" type="range" min="0" max="150" step="1" value="100"><output for="volume" id="volume-value">100%</output>
+    </section>
+    <section class="signal" aria-label="Signal monitor">
+      <span>Output</span><div id="spectrum" aria-hidden="true"></div><span id="peak">No signal</span><button id="reset">Reset all</button>
+    </section>
+  </main>
+  <footer><p id="hint">Play a YouTube video, then start the mixer.</p><p>Local audio processing · Settings saved on this Mac</p></footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Headphone DJ",
+  "version": "1.1.0",
+  "minimum_chrome_version": "116",
+  "description": "Shape YouTube audio with 50 sound presets, a 10-band equalizer, bass, treble, volume and balance. All processing stays local.",
+  "permissions": ["tabCapture", "offscreen", "storage", "activeTab"],
+  "background": {"service_worker":"worker.mjs","type":"module"},
+  "action": {"default_popup":"popup.html","default_title":"Headphone DJ"},
+  "commands": {"_execute_action":{"suggested_key":{"default":"Alt+Shift+Y","mac":"Alt+Shift+Y"},"description":"Open Headphone DJ"}}
+}
